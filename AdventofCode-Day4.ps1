@@ -1,6 +1,10 @@
 <# Author : Murtadha Marzouq#>
 
 
+# Download the file locally
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/MurtadhaM/Pipline-Python/main/Input.txt" -OutFile input.txt
+
+
 $InputText = Get-Content 'input.txt'
 
 $Players  = [System.Collections.ArrayList]::new()
@@ -23,7 +27,7 @@ function getPlayers{
     $temp_player = ''
     foreach($p in $PlayerValues){
         if(!$p.Equals('')){
-            
+
         $temp_player += " "+ $p
         # Write-Host "$p  " -ForegroundColor Blue
         }

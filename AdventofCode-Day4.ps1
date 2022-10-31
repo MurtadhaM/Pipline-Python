@@ -44,26 +44,29 @@ function getPlayers{
 
 function isWinning($arrayValue){
     $arrayValue = $arrayValue.Split(' ')
-    #($arrayValue[21..24].ForEach(  {$_ -eq "X"})) || ( $arrayValue[16..20].ForEach(  {$_ -eq "X"}) )|| $arrayValue[15..19].ForEach(  {$_ -eq "X"}) || $arrayValue[10..14].ForEach(  {$_ -eq "X"}) ||  $arrayValue[5..9].ForEach(  {$_ -eq "X"}) || $arrayValue[0..4].ForEach(  {$_ -eq "X"})
-    $win = $arrayValue[0] -eq ("X")  && $arrayValue[10].Equals("X") && $arrayValue[15].Equals("X") && $arrayValue[20].Equals('X') && $arrayValue[25] -eq "X" 
-    write-host "Columns Status: " 
-    Write-Host (($arrayValue[21..24].ForEach(  {$_ -eq "X"})) || ( $arrayValue[16..20].ForEach(  {$_ -eq "X"}) )|| $arrayValue[15..19].ForEach(  {$_ -eq "X"}) || $arrayValue[10..14].ForEach(  {$_ -eq "X"}) ||  $arrayValue[5..9].ForEach(  {$_ -eq "X"}) || $arrayValue[0..4].ForEach(  {$_ -eq "X"}))
-$win2=   ($arrayValue[1]  -eq $arrayValue[6]  -eq $arrayValue[11]  -eq $arrayValue[16]  -eq $arrayValue[21] ) || ($arrayValue[2]  -eq $arrayValue[7]  -eq $arrayValue[12]  -eq $arrayValue[17]  -eq $arrayValue[22] ) || ($arrayValue[3]  -eq $arrayValue[8]  -eq $arrayValue[13]  -eq $arrayValue[18]  -eq $arrayValue[23] ) ||($arrayValue[4]  -eq $arrayValue[9]  -eq $arrayValue[14] -eq $arrayValue[19] -eq $arrayValue[24] ) ||   (($arrayValue[21..24].ForEach(  {$_ -eq "X"})) || ( $arrayValue[16..20].ForEach(  {$_ -eq "X"}) )|| $arrayValue[15..19].ForEach(  {$_ -eq "X"}) || $arrayValue[10..14].ForEach(  {$_ -eq "X"}) ||  $arrayValue[5..9].ForEach(  {$_ -eq "X"}) || $arrayValue[0..4].ForEach(  {$_ -eq "X"}))
-#   
-    Write-Host    "$(($arrayValue[0]  -eq $arrayValue[5]  -eq $arrayValue[10]  -eq $arrayValue[15] -eq $arrayValue[20] -eq $arrayValue[25] -eq "X" ) || ($arrayValue[1]  -eq $arrayValue[6]  -eq $arrayValue[11]  -eq $arrayValue[16]  -eq $arrayValue[21] ) || ($arrayValue[2]  -eq $arrayValue[7]  -eq $arrayValue[12]  -eq $arrayValue[17]  -eq $arrayValue[22] ) || ($arrayValue[3]  -eq $arrayValue[8]  -eq $arrayValue[13]  -eq $arrayValue[18]  -eq $arrayValue[23] ) ||($arrayValue[4]  -eq $arrayValue[9]  -eq $arrayValue[14] -eq $arrayValue[19] -eq $arrayValue[24] ))"  -ForegroundColor Cyan
+    # True if "X" is found in a row or a column inside $arrayValue
+    $win = $false 
+    # create a  5x5 array
+    $4DArray  = @([System.Collections.ArrayList]::new(),[System.Collections.ArrayList]::new(),[System.Collections.ArrayList]::new(),[System.Collections.ArrayList]::new(),[System.Collections.ArrayList]::new(),[System.Collections.ArrayList]::new())
 
-    # Stop if winning and inform the user
-    if($win.Equals("True")){
-        Write-Host -Message "Won with Array $arrayValue" -ForegroundColor red
-
-        Write-Host $Players_ArrayList[$arrayValue] -ForegroundColor Yellow
-        exit
+    For($i=0; $i -lt $arrayValue.Length; $i++){
+        $4DArray[$i%5].Add($arrayValue[$i])
     }
+    #print the 4D array as a matrix
+    For($i=0; $i -lt 5; $i++){
+        $row = ''
+        For($j=0; $j -lt $4DArray[$i].Count; $j++){
+            $row += $4DArray[$i][$j] + ' '
+        }
 
-    Write-Host "Status: $win" -ForegroundColor Yellow
-    
-    }
-    
+     Write-Host $row  -ForegroundColor Green
+     
+    } 
+    # Col
+}
+
+   
+
 
 function Mark_Number($value){
     $temp_player = ''

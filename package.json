@@ -1,0 +1,30 @@
+{
+  "name": "snakeweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MurtadhaM/Pipline-Python.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MurtadhaM/Pipline-Python/issues"
+  },
+  "homepage": "https://github.com/MurtadhaM/Pipline-Python#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+,
+
+	
+   run:
+
+"start": "npm start"
+
+
+  }
+}

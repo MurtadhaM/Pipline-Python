@@ -1,50 +1,27 @@
-/*
-Author: Murtadha Marzouq
-*/
 
-// Importing the required modules
+// Create an express app
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-// Creating an instance of express
 const app = express();
 
-// Setting up the port
-const port = process.env.PORT || 8080;
 
-// Setting up the middlewares
-app.use(bodyParser.json());
-app.use(cors());
+// Create a server
+const server = require('http').createServer(app);
 
-// Setting up the routes
-app.use('/api', (req, res) => {
-   
-      // Getting the data from the request body
-      const data = req.body;
+// Create a socket.io server
 
-      // Sending the data back to the client
-      res.send(data);
-});
+const port = 8080
+
+function printinformation(port){
+    console.log(`running on port ${port}`)
+}
+
+o
+server.listen(port, printinformation(port));
 
 
+app.get('/', (req,res) =>{
 
-// Listening to the port
-app.listen(port, () => {
-      console.log(`Server started on port ${port}`);
-   }
-);
-
-
-app.get('/', (req, res) => {
-   // returning the index.html file
-   res.sendFile(__dirname + '/templates/index.html');
-});
-
-
-
-
-
-
-
-
+    res.write('Welcome Friend');
+    res.end('hello');
+}
+)
